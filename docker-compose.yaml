@@ -1,0 +1,48 @@
+version: '3'
+services:
+  project-app-nginx:
+   container_name: project-app-nginx
+   image: nginx:1.13
+   restart: always
+   ports:
+   - 80:80
+   - 443:443
+   volumes:
+   - ./nginx/conf.d:/etc/nginx/conf.d
+  project-app-mysql:
+   container_name: project-app-mysql
+   image: mysql/mysql-server:5.7
+   environment:
+    MYSQL_USER: root
+    MYSQL_DATABASE: project_manager_db
+    MYSQL_PASSWORD: Test@Data@321
+    MYSQL_ROOT_PASSWORD: Test@Data@321
+    MYSQL_ROOT_HOST: '%'
+   ports:
+    - "3306:3306"
+   restart: always
+  project-app:
+    image: arunds/project-manager-service:0.0.1-SNAPSHOT
+   # build:
+   #    context: ./project-manager-service
+   #    dockerfile: ./Dockerfile
+    restart: always
+    working_dir: /project-manager-service
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    #command: mvn clean spring-boot:run
+    depends_on:  
+      - project-app-nginx
+      - project-app-mysql
+      - project-app-ui
+  project-app-ui:
+    image: project-manager-ui
+    build:
+      context: ./project-manager-ui
+      dockerfile: ./Dockerfile
+    ports:
+      - 4200:4200
+    expose:
+      - "4200"
