@@ -113,11 +113,9 @@
             <div class="input-group-prepend">
               <span class="input-group-text">Project</span>
             </div>
-            <select class="form-control" id="projId" name="projId" [(ngModel)]="projId"
-                    (ngModelChange)="saveProject()">
+            <select class="form-control" id="projId" name="projId" [(ngModel)]="projId" (ngModelChange)="saveProject()">
               <option value="">Default select</option>
-              <option *ngFor="let project of projects"
-                      value="{{project.id}}">{{project.title}}</option>
+              <option *ngFor="let project of projects" value="{{project.id}}">{{project.title}}</option>
             </select>
           </div>          
         </div>

@@ -26,7 +26,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private long employeeId;
+    private String empId;
     private String firstName;
     private String lastName;
 

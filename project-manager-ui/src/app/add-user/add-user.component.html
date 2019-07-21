@@ -24,8 +24,7 @@
             <span class="input-group-text">Employee Id</span>
           </div>
           <input #empId="ngModel" [(ngModel)]="user.empId" class="form-control" name="empId" type="text"
-                 [ngClass]="{ 'is-invalid': f.submitted && empId.invalid }"
-                 disabled/>
+                 [ngClass]="{ 'is-invalid': f.submitted && empId.invalid }"  />
         </div>
         <button class="btn btn-primary" type="submit" role="button" >{{btnTitle}}</button>
         <a class="btn btn-primary" (click)="reset()" role="button">Reset</a>

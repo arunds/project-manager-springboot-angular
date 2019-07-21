@@ -43,7 +43,8 @@ public class UserController {
 
     @PostMapping
     public void saveUser(@RequestBody User user) {
-    	logger.info("Saving user   # "+user.getFirstName());
+    	logger.info("Saving user   # "+user.getFirstName() + "Emp ID : "+ user.getEmpId());
+    	
         service.saveUpdate(user);
     }
 

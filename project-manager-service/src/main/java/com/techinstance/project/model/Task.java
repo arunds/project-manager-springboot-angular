@@ -38,7 +38,7 @@ public class Task implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "TASK_PARENT_ID")
-	private Task parent;
+	private Task parentTask;
 	
 	String title;
 	

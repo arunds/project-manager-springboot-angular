@@ -16,22 +16,18 @@ import {ProjectService} from '../services/project.service';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-
- 
-  task: Task;  
+  users: User[];
+  projects: Project[];
+  empId: string;
+  task: Task;
+  project: Project;
   parentTask: Task;
+  userName  = '';
+  projectTitle = '';
   parentTitle = '';
+  projId  = '';
   parentId  = '';
   tasks: Task[];
-
-  projects: Project[];
-  project: Project;
-  projectTitle = '';
-  projId  = '';
-
-  users: User[];
-  userName  = '';
-  empId: string;
 
   constructor(
     private ref: ChangeDetectorRef,
@@ -62,33 +58,26 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProject();
-    this.getAllUsers(); 
+    this.getAllUsers();
     this.getAllTask();
   }
   onSubmit() {
     this.taskService.addTask(this.task).then(
       value => {
-        this.router.navigate(['./viewTask']);
+        this.router.navigate(['./view']);
       }
         );
       }
 
-      getAllUsers()  {
-        this.userService.get().subscribe( v => {
-            this.users = v;
-            this.ref.detectChanges();
-          }
-        );
+  getAllUsers()  {
+    this.userService.get().subscribe( v => {
+        this.users = v;
+        this.ref.detectChanges();
       }
+    );
+  }
 
-      getAllProject()  {
-        this.projectService.get().subscribe( v => {
-            console.log(this.projects);
-            this.projects = v;
-            this.ref.detectChanges();
-          }
-        );
-      }
+
 
   getAllTask()  {
     this.taskService.get().subscribe( v => {
@@ -100,28 +89,18 @@ export class AddTaskComponent implements OnInit {
   }
 
 
-
-  openProject(content) {
-    this.projectService.get().subscribe( p => {
-        this.projects = p;
-        this.modalService.open(content);
+  getAllProject()  {
+    this.projectService.get().subscribe( v => {
+        console.log(this.projects);
+        this.projects = v;
         this.ref.detectChanges();
       }
     );
   }
 
-  saveProject() {
-    this.task.project = this.projects
-      .filter(p => { if (p.id === this.projId) { return p; } }).map(p => p)[0];
-    if (this.modalService.hasOpenModals()) { this.modalService.dismissAll(); }
-    this.projectTitle = this.task.project.title;
-    return true;
-  }
-
-
-  openUser(content) {
-    this.userService.get().subscribe( v => {
-        this.users = v;
+  openProject(content) {
+    this.projectService.get().subscribe( p => {
+        this.projects = p;
         this.modalService.open(content);
         this.ref.detectChanges();
       }
@@ -136,6 +115,28 @@ export class AddTaskComponent implements OnInit {
     return true;
   }
 
+  saveProject() {
+    console.log(this.projId);
+    this.task.project = this.projects
+      .filter(p => { if (p.id == this.projId) { return p; } }).map(p => p)[0];
+    if (this.modalService.hasOpenModals()) { this.modalService.dismissAll(); }
+    this.projectTitle = this.task.project.title;
+    console.log(this.task.project.id);
+    return true;
+  }
+
+
+  openUser(content) {
+    this.userService.get().subscribe( v => {
+        this.users = v;
+        this.modalService.open(content);
+        this.ref.detectChanges();
+      }
+    );
+  }
+
+
+
 
 
   openParentTask(content) {
@@ -149,9 +150,11 @@ export class AddTaskComponent implements OnInit {
 
   saveParentTask() {
     this.task.parentTask = this.tasks
-      .filter(u => { if (u.id === this.parentId) { return u; } }).map(u => u)[0];
+      .filter(u => { if (u.id == this.parentId) { return u; } }).map(u => u)[0];
     if (this.modalService.hasOpenModals()) { this.modalService.dismissAll(); }
     this.parentTitle = this.task.parentTask.title;
+    console.log(this.task.parentTask.id);
     return true;
   }
 }
+
