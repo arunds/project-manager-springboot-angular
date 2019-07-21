@@ -49,4 +49,12 @@ public class Task implements Serializable {
 	private Date endDate;
 	
 	private String status;
+	
+	@ManyToOne
+	@JoinColumn(name = "USER_ID")
+    private User user;
+    
+	@ManyToOne
+	@JoinColumn(name = "PROJECT_ID")
+    private Project project;
 }

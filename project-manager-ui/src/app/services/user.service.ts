@@ -9,14 +9,14 @@ import {Observable} from "rxjs";
 })
 export class UserService {
   http: HttpClient;
-  endpoint = 'http://localhost:8080/api/users';
+  endpoint = 'http://localhost:8080/user/';
 
   constructor(http: HttpClient ) {
     this.http = http;
   }
 
   get(): Observable<User[]> {
-    return this.http.get<User[]>(this.endpoint);
+    return this.http.get<User[]>(this.endpoint+'users');
   }
 
   getUser(uid: string):  Observable<User>  {

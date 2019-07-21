@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
 export class ProjectService {
 
   http: HttpClient;
-  endpoint = 'http://localhost:8080/api/projects';
+  endpoint = 'http://localhost:8080/project/projects';
 
   constructor(http: HttpClient ) {
     this.http = http;
@@ -26,6 +26,6 @@ export class ProjectService {
   }
 
   add( proj: Project): Observable<Project> {
-    return this.http.post<Project>(this.endpoint,proj);
+    return this.http.post<Project>('http://localhost:8080/project/',proj);
   }
 }

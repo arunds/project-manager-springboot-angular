@@ -10,7 +10,7 @@ export class TaskService {
 
   http: HttpClient; 
   
-  taskUrl = 'http://localhost:8080/task-manager/';
+  taskUrl = 'http://localhost:8080/task/';
   tasksUrl = this.taskUrl + 'tasks';
   
   constructor(http: HttpClient ) {

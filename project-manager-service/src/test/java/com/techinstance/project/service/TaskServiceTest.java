@@ -1,4 +1,4 @@
-package com.techinstance.task.service;
+package com.techinstance.project.service;
 
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;

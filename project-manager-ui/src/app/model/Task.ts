@@ -1,3 +1,6 @@
+import {User} from './User';
+import {Project} from './Project';
+
 export class Task {
    id: string;
    title: string;
@@ -7,4 +10,6 @@ export class Task {
    summary: string;
    parentTask: Task;
    status: string;
+   user: User;
+   project: Project;
 }

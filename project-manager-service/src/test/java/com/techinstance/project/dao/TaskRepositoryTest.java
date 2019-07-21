@@ -1,4 +1,4 @@
-package com.techinstance.task.dao;
+package com.techinstance.project.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

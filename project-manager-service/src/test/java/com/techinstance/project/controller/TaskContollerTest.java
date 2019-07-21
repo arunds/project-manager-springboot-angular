@@ -1,4 +1,4 @@
-package com.techinstance.task.controller;
+package com.techinstance.project.controller;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
@@ -47,7 +47,7 @@ public class TaskContollerTest {
 		Task t = createTask("Create UI");
 		Arrays.asList(createTask("Create UI"));
 
-		mockMvc.perform(get("/task-manager/tasks").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		mockMvc.perform(get("/task/tasks").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].title", is(t.getTitle())));
 	}
 	
@@ -59,7 +59,7 @@ public class TaskContollerTest {
 		Task t = createTask("Create UI");
 		Arrays.asList(createTask("Create UI"));
 
-		mockMvc.perform(get("/task-manager/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		mockMvc.perform(get("/task/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("title", is(t.getTitle())));
 	}
 	
@@ -67,13 +67,13 @@ public class TaskContollerTest {
 	public void testSaveTask() throws Exception {
 		Task t = createTask("Create UI");
 		BDDMockito.doNothing().when(serviceMock).saveUpdate(t);
-		mockMvc.perform(post("/task-manager").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(t))).andExpect(status().isOk());
+		mockMvc.perform(post("/task").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(t))).andExpect(status().isOk());
 	}
 	
 	@Test
 	public void testDeleteTask() throws Exception {
 		given(serviceMock.get(Long.valueOf(1))).willReturn(createTask("Create UI"));
-		mockMvc.perform(post("/task-manager/delete").contentType(MediaType.APPLICATION_JSON).content("1")).andExpect(status().isOk());
+		mockMvc.perform(post("/task/delete").contentType(MediaType.APPLICATION_JSON).content("1")).andExpect(status().isOk());
 	}
 
 	public static Task createTask(String title) {

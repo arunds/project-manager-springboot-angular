@@ -95,6 +95,33 @@
             </div>
           </div>
 
+        <!--User -->
+        <div class="row col-sm-6 col-md-6 ">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">User</span>
+            </div>
+            <select class="form-control" id="empId" name="empId" [(ngModel)]="empId" (ngModelChange)="saveUser()">
+              <option value="">Default select</option>
+              <option *ngFor="let user of users" value="{{user.empId}}">{{user.firstName}}-{{user.lastName}}</option>
+            </select>
+          </div>
+        </div>
+          <!-- Project-->
+        <div class="row col-sm-6 col-md-6 ">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Project</span>
+            </div>
+            <select class="form-control" id="projId" name="projId" [(ngModel)]="projId"
+                    (ngModelChange)="saveProject()">
+              <option value="">Default select</option>
+              <option *ngFor="let project of projects"
+                      value="{{project.id}}">{{project.title}}</option>
+            </select>
+          </div>          
+        </div>
+        
           <div class="row col-sm-6 col-md-6 ">
             <button class="btn btn-primary" type="submit" role="button" >Add Task</button>&nbsp;&nbsp;
             <a class="btn btn-primary" routerLink="/view" role="button" routerLinkActive="active">Reset</a>
