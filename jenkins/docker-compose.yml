@@ -1,0 +1,10 @@
+version: '2'
+services:
+  jenkins:
+    hostname: jenkins.local
+    container_name: jenkins
+    image: arunds/jenkins:latest
+    ports:
+      - 8085:8080
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock

@@ -35,6 +35,7 @@ export class TaskService {
   }
 
   updateTask(id: string, t: Task): Observable<any> {
+    console.log(t);
     return this.http.post(this.taskUrl + '' + id, t);
   }
 
@@ -43,6 +44,7 @@ export class TaskService {
   }
 
   addTask(t: Task): Promise<any> {
+    console.log(t);
     return this.http.post(this.taskUrl, t).toPromise().then(value => value);
   }
 }

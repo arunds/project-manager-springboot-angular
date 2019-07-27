@@ -22,10 +22,12 @@ export class ProjectService {
   }
 
   update(proj: Project): Observable<Project> {
+    console.log(proj);
     return this.http.post<Project>(this.endpoint,proj);
   }
 
   add( proj: Project): Observable<Project> {
+    console.log(proj);
     return this.http.post<Project>('http://localhost:8080/project/',proj);
   }
 }
