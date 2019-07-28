@@ -96,29 +96,34 @@
           </div>
 
         <!--User -->
-        <div class="row col-sm-6 col-md-6 ">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">User</span>
+        <div class="form-group row">
+            <!-- Material input -->
+            <label for="empId" class="col-sm-2 col-form-label">User:</label>
+            <div class="col-sm-6">
+              <div class="md-form mt-0">
+                  <select class="form-control" id="empId" name="empId" [(ngModel)]="empId" (ngModelChange)="saveUser()">
+                      <option value="">Select User</option>
+                      <option *ngFor="let user of users" value="{{user.empId}}">{{user.firstName}}-{{user.lastName}}</option>
+                    </select>
+              </div>
             </div>
-            <select class="form-control" id="empId" name="empId" [(ngModel)]="empId" (ngModelChange)="saveUser()">
-              <option value="">Default select</option>
-              <option *ngFor="let user of users" value="{{user.empId}}">{{user.firstName}}-{{user.lastName}}</option>
-            </select>
           </div>
-        </div>
+
+
           <!-- Project-->
-        <div class="row col-sm-6 col-md-6 ">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Project</span>
+        <div class="form-group row">
+            <!-- Material input -->
+            <label for="projId" class="col-sm-2 col-form-label">Project:</label>
+            <div class="col-sm-6">
+              <div class="md-form mt-0">
+                  <select class="form-control" id="projId" name="projId" [(ngModel)]="projId" (ngModelChange)="saveProject()">
+                      <option value="">Select Project</option>
+                      <option *ngFor="let project of projects" value="{{project.id}}">{{project.title}}</option>
+                    </select>
+              </div>
             </div>
-            <select class="form-control" id="projId" name="projId" [(ngModel)]="projId" (ngModelChange)="saveProject()">
-              <option value="">Default select</option>
-              <option *ngFor="let project of projects" value="{{project.id}}">{{project.title}}</option>
-            </select>
-          </div>          
-        </div>
+          </div>
+
         
           <div class="row col-sm-6 col-md-6 ">
             <button class="btn btn-primary" type="submit" role="button" >Add Task</button>&nbsp;&nbsp;

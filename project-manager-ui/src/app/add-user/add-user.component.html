@@ -11,6 +11,7 @@
                  [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }"
                  required/>
         </div>
+        <br>
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">Last Name</span>
@@ -19,6 +20,7 @@
                  [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }"
                  required/>
         </div>
+        <br>
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">Employee Id</span>
@@ -26,7 +28,8 @@
           <input #empId="ngModel" [(ngModel)]="user.empId" class="form-control" name="empId" type="text"
                  [ngClass]="{ 'is-invalid': f.submitted && empId.invalid }"  />
         </div>
-        <button class="btn btn-primary" type="submit" role="button" >{{btnTitle}}</button>
+        <br>
+        <button class="btn btn-primary" type="submit" role="button" >{{btnTitle}}</button>&nbsp;&nbsp;
         <a class="btn btn-primary" (click)="reset()" role="button">Reset</a>
       </form>
     </div>
@@ -34,19 +37,36 @@
   </div>
   <hr class="style11">
 
-      <a *ngFor="let usr of users">
-        <div class="row card">
-          <div class="card-header">{{usr.empId}}</div>
-          <div class="card-body">
-            <div>
-            {{usr.firstName}}
-            {{usr.lastName}}
-          </div>
-            <div>
-            <a class="btn btn-primary" (click)="edit(usr)" role="button">Edit</a>
-            <a class="btn btn-primary" (click)="delete(usr)" role="button">Delete</a>
-          </div>
-          </div>
-        </div>
-      </a>
+     <div  *ngIf="users && users.length >= 1" class="container">
+        <table class="table table-fixed">
+          <thead>
+          <tr>
+            <td class="col-xs-6">Emp ID</td>
+            <td class="col-xs-6">First Name</td>
+            <td class="col-xs-6">Last Name</td>
+            <td class="col-xs-6">&nbsp;</td>
+            <td class="col-xs-6">&nbsp;</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let usr of users" >
+            <td class="col-xs-6" (click)="edit(usr)"> {{usr.empId}}</td>
+            <td class="col-xs-6" (click)="edit(usr)"> {{usr.firstName}}</td>        
+            <td class="col-xs-6" (click)="edit(usr)"> {{usr.firstName}}</td>
+            <td class="col-xs-6">
+                  <a (click)="edit(usr)" class="btn btn-primary" role="button" routerLinkActive="active">Edit</a>
+                  &nbsp;
+            </td>
+            <td class="col-xs-6">
+              <a (click)="delete(usr)" class="btn btn-danger" role="button" routerLinkActive="active">Delete</a>
+              &nbsp;
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
 </div>
