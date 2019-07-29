@@ -16,8 +16,6 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +23,6 @@ import lombok.Setter;
 @Table(name = "project")
 @Getter
 @Setter
-@EqualsAndHashCode
 @JsonDeserialize(as = Project.class)
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "tasks"})
 public class Project {
@@ -58,18 +55,22 @@ public class Project {
     public Project() {
     }
 
-	public void setNoOfTasks(int noOfTasks) {
+    public int getNoOfTasks() {
 		this.noOfTasks = getTasks().size();
+		return noOfTasks;
 	}
 
-	public void setCompleted(int completed) {
+	public int getCompleted() {
+
 		int count = 0;
 		for (Task task : tasks) {
 			if (task.getStatus() == "ENDED") {
-				count ++;
+				count++;
 			}
 		}
 		this.completed = count;
+
+		return completed;
 	}
     
 }
