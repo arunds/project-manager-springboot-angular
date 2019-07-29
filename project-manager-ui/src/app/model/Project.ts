@@ -7,6 +7,8 @@ export class Project {
    endDate: string;
    priority: number;
    manager: User;
+   noOfTasks: string;
+   completed: string;
 
 
   constructor(title: string,  startDate: string, endDate: string,

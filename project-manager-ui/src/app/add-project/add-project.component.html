@@ -99,7 +99,7 @@
     <div class="card-body">
       <table class="table table-hover align-san">
         <tbody class="tbody">
-        <tr *ngFor="let p of filteredPrj | projectFilter : filterStr">
+         <tr *ngFor="let p of filteredPrj | projectFilter : filterStr">
           <td>
             <table class="inner-table">
               <tr>
@@ -109,8 +109,8 @@
                           <td colspan="4"><b>Project:</b> {{p.title}}</td>
                         </tr>
                         <tr>
-                          <td colspan="2"><b>No of Tasks:</b> {{p.priority}}</td>
-                          <td colspan="2"><b>Completed:</b> {{p.priority}}</td>
+                          <td colspan="2"><b>No of Tasks:</b> {{p.noOfTasks}}</td>
+                          <td colspan="2"><b>Completed:</b> {{p.completed}}</td>
                         </tr>
                         <tr>
                           <td><b>Start Date:</b> {{p.startDate}}</td>

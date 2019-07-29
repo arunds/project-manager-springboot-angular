@@ -37,6 +37,26 @@
   </div>
   <hr class="style11">
 
+  <div class="card">
+   
+    <div class="card-body">
+    <!-- Filter Section-->
+    <div>
+      <div class="row">
+        <div>
+          <input type="text" size="40" [(ngModel)]="filterStr" name="filterStr" class="form-control" id="filterStr" placeholder="Search...">
+          <label>Sort By:&nbsp;&nbsp;</label>
+          <button type="button" class="btn btn-primary btn-sm mr-3" (click)="sortByFirstName()">First Name</button>
+          <button type="button" class="btn btn-primary btn-sm mr-3" (click)="sortByLastName()">Last Name</button>
+          <button type="button" class="btn btn-primary btn-sm mr-3" (click)="sortById()">Id</button>        
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <hr class="style11">
+
+
      <div  *ngIf="users && users.length >= 1" class="container">
         <table class="table table-fixed">
           <thead>
@@ -49,7 +69,8 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let usr of users" >
+          
+              <tr *ngFor="let usr of filteredUser | userFilter : filterStr">
             <td class="col-xs-6" (click)="edit(usr)"> {{usr.empId}}</td>
             <td class="col-xs-6" (click)="edit(usr)"> {{usr.firstName}}</td>        
             <td class="col-xs-6" (click)="edit(usr)"> {{usr.firstName}}</td>

@@ -14,11 +14,13 @@ export class AddUserComponent implements OnInit {
   empId: string;
   user: User;
   users: User[];
+  filteredUser: User[];
   btnTitle = 'Add';
 
   async getAllUsers()  {
     this.userService.get().subscribe( v => {
        this.users = v;
+       this.filteredUser = this.users;
       this.ref.detectChanges();
       }
     );
@@ -59,7 +61,31 @@ export class AddUserComponent implements OnInit {
        this.userService.delete(usr).subscribe(
          v=> {
            this.getAllUsers();
+           this.filteredUser = this.users;
       }
      );
+  }
+
+  async resetFilter() {
+    await this.getAllUsers();
+    this.filteredUser = this.users;
+  }
+
+  sortByFirstName() {
+    this.filteredUser = this.users.sort ((a: any, b: any) =>
+      b.firstName - a.firstName
+    );
+  }
+
+  sortByLastName() {
+    this.filteredUser = this.users.sort ((a: any, b: any) =>
+      b.lastName - a.lastName
+    );
+  }
+
+  sortById() {
+    this.filteredUser = this.users.sort ((a: any, b: any) =>
+      b.empId - a.empId
+    );
   }
 }
