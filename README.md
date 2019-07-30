@@ -27,6 +27,9 @@ mvn jacoco:report
 
 ## Run Load Testing
 mvn jmeter:jmeter -P jmeter
+Below is the report from the Jmeter tool 
+![Load Testing Report](screenshots/load-testing-report.PNG?raw=true "Load Testing Report")
+
 
 ## After the container started we can acccess the angular application in the below URL
 IP Adress of the docker VM  
