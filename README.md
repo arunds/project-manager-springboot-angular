@@ -1,5 +1,5 @@
 # Project Manager Application
-Task manager application with springboot and angular UI. It uses MySQL as backend.
+Project manager application with springboot and angular UI. It uses MySQL as backend.
 
 # project-manager-springboot-angular
 Repository URL
