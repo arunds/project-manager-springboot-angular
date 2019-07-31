@@ -30,10 +30,13 @@ __mvn jmeter:jmeter -P jmeter__
 Below is the report from the Jmeter tool for 100 users
 ![Load Testing Report](screenshots/load-testing-report.PNG?raw=true "Load Testing Report")
 
+## Docker container
+![Docker Container](screenshots/docker.PNG?raw=true "Docker Container")
 
-## After the container started we can acccess the angular application in the below URL
-IP Adress of the docker VM  
-http://192.168.99.100:4200/
+## Jenkins
+![Jenkins](screenshots/jenkins-pipeline.PNG?raw=true "Jenkions Pipeline")
+
+## After the container started we can acccess the angular application
 
 ## Add User Screen
 ![Add User](screenshots/user-screen.PNG?raw=true "Add User Screen")
