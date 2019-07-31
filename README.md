@@ -1,5 +1,5 @@
 # Project Manager Application
-Task manager application with springboot and angular UI. It uses MySQL as backend.
+Project manager application with springboot and angular UI. It uses MySQL as backend.
 
 # project-manager-springboot-angular
 Repository URL
@@ -22,12 +22,12 @@ project-manager-springboot-angular\project-manager-service> __mvn spring-boot:ru
 project-manager-springboot-angular> __docker-compose up__  
 
 ## Run Code Coverage Report
-mvn jacoco:report
+__mvn jacoco:report__
 ![Code Coverage Report](screenshots/code-coverage-report.PNG?raw=true "Code Coverage Report")
 
 ## Run Load Testing
-mvn jmeter:jmeter -P jmeter
-Below is the report from the Jmeter tool 
+__mvn jmeter:jmeter -P jmeter__  
+Below is the report from the Jmeter tool for 100 users
 ![Load Testing Report](screenshots/load-testing-report.PNG?raw=true "Load Testing Report")
 
 
@@ -47,6 +47,6 @@ http://192.168.99.100:4200/
 
 Below is the mysql workbench database schema details
 
-![MySql Workbench DB Schema](screenshots/project-manager-schema.PNG?raw=true "Database Schema")
+![MySql Workbench DB Schema](screenshots/project-manager-schema.png?raw=true "Database Schema")
 
 
