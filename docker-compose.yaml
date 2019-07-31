@@ -22,7 +22,7 @@ services:
     - "3306:3306"
    restart: always
   project-app:
-    image: arunds/project-manager-service:0.0.1-SNAPSHOT
+    image: arunds/project-manager-service:latest
    # build:
    #    context: ./project-manager-service
    #    dockerfile: ./Dockerfile
